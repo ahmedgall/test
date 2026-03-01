@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نور الشام | المنيو الرقمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold: #c5a059; 
+            --bg: #05070a; 
+            --card: #11141b; 
+            --text: #ffffff;
+            --sub: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* الهيدر الاحترافي */
+        .header {
+            height: 300px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), var(--bg)), 
+                        url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px 20px;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .header h1 { font-size: 32px; font-weight: 900; color: var(--gold); }
+        .header p { color: var(--sub); font-size: 14px; }
+
+        .container { padding: 20px; }
+
+        /* تصنيفات المنيو */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+        }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: rgba(197, 160, 89, 0.2); }
+
+        /* كارت الصنف المطور */
+        .item {
+            background: var(--card);
+            border-radius: 25px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: 0.3s;
+        }
+
+        .item img {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 2px solid rgba(197, 160, 89, 0.3);
+        }
+
+        .item-details { flex: 1; }
+        .item-details h3 { font-size: 17px; margin-bottom: 4px; }
+        .item-details p { font-size: 12px; color: var(--sub); line-height: 1.4; }
+        
+        .price-tag {
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--gold);
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        /* زر التقييم العائم */
+        .feedback-trigger {
+            width: 100%;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px dashed var(--gold);
+            color: var(--gold);
+            padding: 15px;
+            border-radius: 20px;
+            margin-top: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* نافذة التقييم (Modal) */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: #1a1f29;
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .modal-box h2 { color: var(--gold); margin-bottom: 10px; }
+        
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: #0a0c10;
+            border: 1px solid #2d3748;
+            border-radius: 15px;
+            color: white;
+            padding: 15px;
+            margin: 15px 0;
+            resize: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .send-btn {
+            width: 100%;
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 900;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .close-btn { margin-top: 15px; color: var(--sub); background: none; border: none; cursor: pointer; }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>نور الشام 🇸🇾</h1>
+        <p>أشهى المأكولات السورية الأصيلة في قلب القاهرة</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="section-title">المشاوي</div>
+
+        <div class="item">
+            <img src="cv.jpeg" alt="كباب">
+            <div class="item-details">
+                <h3>كباب حلبي بالكرز</h3>
+                <p>لحم ضأن مفروم مع صوص الكرز الحلبي المميز والمكسرات.</p>
+                <div class="price-tag">320 ج.م</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=200" alt="فتة">
+            <div class="item-details">
+                <h3>فتة شاورما دجاج</h3>
+                <p>أرز بسمتي فاخر مع شرائح الشاورما المتبلة والثومية المقرمشة.</p>
+                <div class="price-tag">145 ج.م</div>
+            </div>
+        </div>
+
+        <div class="section-title">المقبلات</div>
+
+        <div class="item">
+            <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?w=200" alt="حمص">
+            <div class="item-details">
+                <h3>حمص بيروتي</h3>
+                <p>مزيج من الحمص المطحون مع الطحينة والليمون وزيت الزيتون.</p>
+                <div class="price-tag">65 ج.م</div>
+            </div>
+        </div>
+
+        <button class="feedback-trigger" onclick="openModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            إرسال ملاحظة مباشرة للمدير
+        </button>
+
+    </div>
+
+    <div class="modal" id="feedbackModal">
+        <div class="modal-box">
+            <h2>رأيك يهمنا 🌟</h2>
+            <p style="color: var(--sub); font-size: 13px;">ملاحظاتك تصل للإدارة مباشرة وبسرية تامة لضمان جودة خدمتنا.</p>
+            <textarea id="feedbackText" placeholder="اكتب اقتراحك أو شكواك هنا..."></textarea>
+            <button class="send-btn" onclick="sendToTelegram()">إرسال الآن</button>
+            <button class="close-btn" onclick="closeModal()">إلغاء</button>
+        </div>
+    </div>
+
+    <script>
+        // احصل على رقم الطاولة من الرابط تلقائياً
+        const urlParams = new URLSearchParams(window.location.search);
+        const tableNum = urlParams.get('t') || "عام";
+
+        function openModal() { document.getElementById('feedbackModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('feedbackModal').style.display = 'none'; }
+
+        async function sendToTelegram() {
+            const message = document.getElementById('feedbackText').value;
+            if (!message) { alert("من فضلك اكتب ملاحظتك أولاً"); return; }
+
+            // --- إعدادات البوت ---
+            const botToken = "8743562009:AAEBGYnqwxz1xnCrA6mZai5WCD8qVVBLIKA"; // ضع التوكن هنا
+            const chatId = "6387342853";     // ضع معرف الشات هنا
+            
+            const text = `📬 ملحوظة جديدة من مطعم نور الشام\n📍 طاولة رقم: ${tableNum}\n💬 الرسالة: ${message}`;
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+
+            try {
+                const response = await fetch(url);
+                if (response.ok) {
+                    alert("تم إرسال ملاحظتك للمدير بنجاح. شكراً لك!");
+                    document.getElementById('feedbackText').value = "";
+                    closeModal();
+                } else {
+                    alert("حدث خطأ، حاول مرة أخرى.");
+                }
+            } catch (error) {
+                alert("يرجى التأكد من الاتصال بالإنترنت.");
+            }
+        }
+    </script>
+</body>
+</html>
